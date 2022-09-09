@@ -73,7 +73,6 @@ function displayInvoiceMessage(message) {
     $("#dvErrorMessage").append(message);
 }
 
-
 function loadDefaultControls() {
 
     var invoices = getInvoicesForDropDown();

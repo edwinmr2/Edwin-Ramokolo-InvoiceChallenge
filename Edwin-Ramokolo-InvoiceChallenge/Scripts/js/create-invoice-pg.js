@@ -6,6 +6,7 @@
 
 
 $(function () {
+
     $("#dvInvoiceDetails").hide();
     //Load drop down with customers
     loadDefaultControls();
@@ -18,64 +19,12 @@ $(function () {
 
     });
 
-   
-
     $("#btnAddLineItem").click(function () {
-        $("#dvErrorMessage").text("");
-        var productId = $("#ddProductService option:selected").val();
-        var errorMessage = validateInvoiceControls(true);
-        if (errorMessage != "") {
-            displayInvoiceMessage(errorMessage);
-            return;
-        }
-        //add  items to table
-        var product = getProductById(productId);
-        var amount = product.Amount * parseInt($("#txtQuantity").val());
-        $("#tblLineItems").append("<tr>" +
-            "<td class='productName'>" + product.ProductName + " Quantity: " + $("#txtQuantity").val() + "</td>" +
-            "<td class='isTaxed'>" + product.IsTaxed + "</td>" +
-            "<td class='amount'>" + amount + "</td>" +
-            "</tr>");
-
-
-        var subTotal = parseInt($("#spSubTotal").text());
-        subTotal = subTotal + amount;
-        $("#spSubTotal").text(subTotal);
-
-        if (product.IsTaxed) {
-            var taxable = parseInt($("#spTaxable").text());
-            taxable = taxable + amount;
-            $("#spTaxable").text(taxable);
-
-        }
-
-        var taxDue = (parseInt($("#spTaxable").text()) * parseInt($("#spTaxrate").text())) / 100
-        $("#spTaxdue").text(taxDue);
-
-        var total = parseInt($("#spSubTotal").text()) - parseInt($("#spTaxdue").text());
-        $("#spTotal").text(total);
-        //clear line item controls
-        $("#ddProductService").prop('selectedIndex', 0);;
-        $("#txtQuantity").val("");
+        addLineItem();
     });
 
     $("#btnSubmitInvoice").click(function () {
-        $("#dvErrorMessage").text("");
-        //validate invoice data.
-        var errorMessage = validateInvoiceControls(false);
-        if (errorMessage != "") {
-            displayInvoiceMessage(errorMessage);
-            return;
-        }
-        //build invoice object
-        var invoiceObject = buildInvoiceObject();
-        //submit invoice 
-        var invoiceId = postInvoice(invoiceObject);
-        //redirect to view invoice page
-        if (invoiceId > 0)
-            window.location.href = "/Invoices/ViewInvoice";
-        else
-            displayInvoiceMessage("Something went wrong while creating invoice, kindly alert application support.");
+        submitInvoice();
     });
 
 
@@ -84,6 +33,7 @@ $(function () {
 function deleteLineItem() {
     alert("it works");
 }
+
 function displayInvoiceMessage(message) {
 
     $("#dvErrorMessage").append(message);
@@ -178,4 +128,65 @@ function loadDefaultControls() {
             $("#spTaxrate").text(val.Value);
     });
 
+}
+
+function addLineItem() {
+
+    $("#dvErrorMessage").text("");
+    var productId = $("#ddProductService option:selected").val();
+    var errorMessage = validateInvoiceControls(true);
+    if (errorMessage != "") {
+        displayInvoiceMessage(errorMessage);
+        return;
+    }
+    //add  items to table
+    var product = getProductById(productId);
+    var amount = product.Amount * parseInt($("#txtQuantity").val());
+    $("#tblLineItems").append("<tr>" +
+        "<td class='productName'>" + product.ProductName + " Quantity: " + $("#txtQuantity").val() + "</td>" +
+        "<td class='isTaxed'>" + product.IsTaxed + "</td>" +
+        "<td class='amount'>" + amount + "</td>" +
+        "</tr>");
+
+
+    var subTotal = parseInt($("#spSubTotal").text());
+    subTotal = subTotal + amount;
+    $("#spSubTotal").text(subTotal);
+
+    if (product.IsTaxed) {
+        var taxable = parseInt($("#spTaxable").text());
+        taxable = taxable + amount;
+        $("#spTaxable").text(taxable);
+
+    }
+
+    var taxDue = (parseInt($("#spTaxable").text()) * parseInt($("#spTaxrate").text())) / 100
+    $("#spTaxdue").text(taxDue);
+
+    var total = parseInt($("#spSubTotal").text()) - parseInt($("#spTaxdue").text());
+    $("#spTotal").text(total);
+    //clear line item controls
+    $("#ddProductService").prop('selectedIndex', 0);;
+    $("#txtQuantity").val("");
+
+}
+
+function submitInvoice() {
+
+    $("#dvErrorMessage").text("");
+    //validate invoice data.
+    var errorMessage = validateInvoiceControls(false);
+    if (errorMessage != "") {
+        displayInvoiceMessage(errorMessage);
+        return;
+    }
+    //build invoice object
+    var invoiceObject = buildInvoiceObject();
+    //submit invoice 
+    var invoiceId = postInvoice(invoiceObject);
+    //redirect to view invoice page
+    if (invoiceId > 0)
+        window.location.href = "/Invoices/ViewInvoice";
+    else
+        displayInvoiceMessage("Something went wrong while creating invoice, kindly alert application support.");
 }

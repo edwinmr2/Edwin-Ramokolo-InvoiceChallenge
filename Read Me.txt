@@ -1,10 +1,5 @@
-Please run the DB script InvoicingChallengeDB on MSSQL server
-
 //NB Please change connection string
 
 Line 14 on the Data Access Layer on the project (Edwin-Ramokolo-InvoiceChallenge-DataAccess)
 
 const string connectionString = "server=localhost\\SQLExpress;database=InvoicingChallengeDB;integrated Security=SSPI;";
-
-
----Please feel free to contact me for any questions or configuration issues

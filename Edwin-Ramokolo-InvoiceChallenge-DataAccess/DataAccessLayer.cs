@@ -79,7 +79,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_DataAccess
             return customer;
         }
 
-       
+
 
         public List<Customer> GetAllCustomers()
         {
@@ -318,7 +318,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_DataAccess
         {
             InvoiceLineItem lineItem = null;
 
-            string queryString = string.Format("SELECT Id, InvoiceId, Quantity, Amount,IsTaxed  FROM InvoiceLineItems Where Id={0};",id);
+            string queryString = string.Format("SELECT Id, InvoiceId, Quantity, Amount,IsTaxed  FROM InvoiceLineItems Where Id={0};", id);
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -384,10 +384,9 @@ namespace Edwin_Ramokolo_InvoiceChallenge_DataAccess
             return invoices;
         }
 
-
         public List<GlobalValue> GetGlobalValues()
         {
-            List<GlobalValue> globalValues =  new List<GlobalValue>();
+            List<GlobalValue> globalValues = new List<GlobalValue>();
             GlobalValue globalValue = null;
 
             string queryString = "SELECT Id, Name, Value FROM GlobalValues;";
@@ -418,5 +417,24 @@ namespace Edwin_Ramokolo_InvoiceChallenge_DataAccess
             return globalValues;
         }
 
+        public void CreateErrorMessage(ErrorMessage errorMessage)
+        {
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+
+                connection.Open();
+                string sql = "INSERT INTO ErrorMessages(Message, Datetime) VALUES (@CompanyName, @BillToName);";
+
+                using (var cmd = new SqlCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Message", errorMessage.Message);
+                    cmd.Parameters.AddWithValue("@Datetime", errorMessage.Datetime);
+                    cmd.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
+        }
     }
 }

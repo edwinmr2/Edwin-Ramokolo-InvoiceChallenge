@@ -24,7 +24,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return newCustomerId;
@@ -46,7 +46,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return customer;
@@ -67,7 +67,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return customers;
@@ -92,7 +92,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return products;
@@ -114,7 +114,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return product;
@@ -150,6 +150,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                     ErrorMessage errorMessage = new ErrorMessage();
                     errorMessage.Datetime = DateTime.Now;
                     errorMessage.Message = "Class: Business Logic + Function: Create Invoice: Invoice failed to be created.";
+                    new DataAccessLayer().CreateErrorMessage(errorMessage);
                 }
 
             }
@@ -160,7 +161,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return newInvoiceId;
@@ -182,7 +183,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return newInvoiceLineItemId;
@@ -201,7 +202,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                     ErrorMessage errorMessage = new ErrorMessage();
                     errorMessage.Datetime = DateTime.Now;
                     errorMessage.Message = "Class: Business Logic + Function: Create Invoice: Invoice failed to be created.";
-
+                    new DataAccessLayer().CreateErrorMessage(errorMessage);
                     return invoice;
                 }
 
@@ -218,7 +219,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return invoice;
@@ -238,7 +239,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return invoiceLineItem;
@@ -266,7 +267,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return invoices;
@@ -292,7 +293,7 @@ namespace Edwin_Ramokolo_InvoiceChallenge_BusinessLogic
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.Datetime = DateTime.Now;
                 errorMessage.Message = ex.Message;
-                //new ErrorMessageHandler().LogErrorMessage(errorMessage);
+                new DataAccessLayer().CreateErrorMessage(errorMessage);
             }
 
             return globalValues;
