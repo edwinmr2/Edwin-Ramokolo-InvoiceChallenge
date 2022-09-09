@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "ViewInvoice";
+}
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+<!-- Google Fonts Roboto -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+
+@*<link href="~/Scripts/css/bootstrap-invoice.min.css" rel="stylesheet" />*@
+<script src="~/Scripts/js/invoice-main.js"></script>
+<script src="~/Scripts/js/view-invoice-pg.js"></script>
+<h2>View Invoice</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="ddInvoiceNumber">Invoice Number</label>
+            <select class="form-control" id="ddInvoiceNumber">
+                <option value="0">Select Invoice Number</option>
+            </select>
+
+        </div>
+        <span>Please select the company/customer you want to generate an invoice for.</span><br /><br />
+        <button id="btnGenerate" type="button" class="btn btn-default">View Invoice</button>
+    </div>
+
+</div>
+<br />
+<br />
+<div id="dvErrorMessage" style="color:red;">
+
+</div>
+<div id="dvInvoice" style="display:none;">
+    <div class="card border-1">
+        <div class="card-body">
+            <div class="container mb-5 mt-3">
+
+                <div class="container">
+
+                    <div class="row" width="100%">
+                        <div class="col-md-8">
+                            <strong id="spCompanyName">Company Name</strong>
+                            <ul class="list-unstyled">
+                                <li class="text-muted" id="spCompanyStreetAddressL1">asdasd sadas</li>
+                                <li class="text-muted" id="spCompanyStreetAddressL2">Street, City</li>
+                                <li class="text-muted" id="spCompanyPhone">State, Country</li>
+                                <li class="text-muted" id="spCompanyFax">123-456-789</li>
+                                <li class="text-muted" id="spCompanyWebsite">123-456-789</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="text-muted"><strong>Invoice</strong></p>
+                            <ul class="list-unstyled">
+                                <li class="text-muted" id="spInvoiceDate">123-456-789</li>
+                                <li class="text-muted" id="spInvoiceNumber">123-456-789</li>
+                                <li class="text-muted" id="spInvoiceCustomerId">123-456-789</li>
+                                <li class="text-muted" id="spInvoiceDueDate">123-456-789</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <strong>Bill To</strong>
+                            <ul class="list-unstyled">
+                                <li class="text-muted" id="spCustomerBillTo">123-456-789</li>
+                                <li class="text-muted" id="spCustomerCompanyName">123-456-789</li>
+                                <li class="text-muted" id="spCustomerStreetAddressLine1">123-456-789</li>
+                                <li class="text-muted" id="spCustomerStreetAddressLine2">123-456-789</li>
+                                <li class="text-muted" id="spCustomerPhone">123-456-789</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="row my-2 mx-1 justify-content-center">
+                        <table class="table table-striped table-borderless">
+                            <thead style="background-color:#84B0CA ;" class="text-white">
+                                <tr>
+
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Taxed</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lineItemResults">
+                                
+                            </tbody>
+
+                        </table>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="ms-3">Add additional notes and payment information</p>
+                            <ul>
+                                <li>1. Total payment due in 30 days</li>
+                                <li>2. Please include the invoice number on your check</li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="list-unstyled">
+                                <li class="text-muted ms-3" id="spTotalDetailsSubTotal">0</li>
+                                <li class="text-muted ms-3" id="spTotalDetailsTaxable">0</li>
+                                <li class="text-muted ms-3" id="spTotalDetailsTaxRate">0</li>
+                                <li class="text-muted ms-3" id="spTotalDetailsTaxDue">0</li>
+                            </ul>
+                            <p class="text-black float-start"><span class="text-black me-3"><strong>Total: </strong></span><span style="font-size: 15px;" id="spTotal">0</span></p>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

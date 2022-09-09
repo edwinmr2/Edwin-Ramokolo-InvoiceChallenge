@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "CreateCustomer";
+}
+<script src="~/Scripts/js/invoice-customers.js"></script>
+<script src="~/Scripts/js/create-customer-pg.js"></script>
+
+<h2>Create Customer</h2>
+
+<div class="row">
+
+    <div class="form-group">
+        <label for="txtCompanyName">Company Name</label>
+        <input type="text" class="form-control" id="txtCompanyName" placeholder="Company Name">
+    </div>
+
+    <div class="form-group">
+        <label for="txtBillToName">Bill To Name</label>
+        <input type="text" class="form-control" id="txtBillToName" placeholder="Bill To Name">
+    </div>
+    <div class="form-group">
+        <label for="txtStreetAddress">Street Address</label>
+        <input type="text" class="form-control" id="txtStreetAddress" placeholder="Street Address">
+    </div>
+    <div class="form-group">
+        <label for="txtCity">City</label>
+        <input type="text" class="form-control" id="txtCity" placeholder="City">
+    </div>
+    <div class="form-group">
+        <label for="txtState">State/Country</label>
+        <input type="text" class="form-control" id="txtState" placeholder="State/Country">
+    </div>
+    <div class="form-group">
+        <label for="txtZipCode">Zip Code</label>
+        <input type="text" class="form-control" id="txtZipCode" placeholder="Zip Code">
+    </div>
+    <div class="form-group">
+        <label for="txtPhoneNumber">Phone Number</label>
+        <input type="text" class="form-control" id="txtPhoneNumber" placeholder="Phone Number">
+    </div>
+
+    <button type="button" class="btn btn-primary" id="btnSubmit">Create Customer</button>
+
+    <button type="button" class="btn btn-primary" id="btnGoCreateInvoice">Skip To Create Invoice</button>
+    <br/>
+    <div id="dvErrorMessage" style="color:red;">
+
+    </div>
+</div>
